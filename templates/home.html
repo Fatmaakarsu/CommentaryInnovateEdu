@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica', sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #editor {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        #image {
+            flex-shrink: 0;
+            width: 1200px;
+            height: 100vh;
+            background-size: cover;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .comment-container {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            overflow-y: auto;
+        }
+
+        .comment {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .comment-wrapper {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .comment .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .comment .actions button {
+            margin-right: 10px;
+            padding: 12px; /* Önceki değer: 15px */
+    border-radius: 10px; /* Önceki değer: 5px */
+    cursor: pointer;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        .comment-container button {
+    background-color: #2196F3;
+    color: rgb(244, 237, 237);
+    padding: 18px; /* Önceki değer: 15px */
+    border: none;
+    border-radius: 15px; /* Önceki değer: 5px */
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+        .comment-container button:hover {
+            background-color: #0b7dda;
+        }
+
+        .reply-form-container {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .replies {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .all-comments-container {
+            background-color: rgb(116, 118, 191);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: rgb(49, 47, 47);
+        }
+
+        .all-comments-container h2 {
+            color: white;
+        }
+
+        .comment-container button,
+.comment-container button[type="button"] {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+    </style>
+    <title>İki Bölümlü Düzen</title>
+</head>
+<body>
+    <div id="editor">
+        <img src="https://github.com/Fatmaakarsu/project-task/blob/main/senaryo.png?raw=true" style="width: 100%; max-height: 90vh; object-fit: contain;" alt="">
+       
+
+        <div class="content-section">
+            <div class="all-comments-container" style="border-radius: 15px;">
+                <h2>Yorumlar</h2>
+    
+    
+    
+                <form id="comment-form " enctype="multipart/form-data">
+                                    
+                    <input type="text" id="search-input" placeholder="Yorumlarda Ara " oninput="searchComments()">
+                    <textarea id="comment" placeholder="Yorumunuz" autocomplete="off"></textarea>
+                    
+                    <button type="button" onclick="addComment()" style="padding: 12px; border-radius: 15px; cursor: pointer; border: none; background-color: #ced0d3; color: rgb(42, 41, 41); transition: background-color 0.3s;  margin-right: 25px; font-weight: bold;">Yorum Ekle</button>
+                    
+                    <!-- Anonim Yorum Ekle Butonu -->
+                    <button type="button" onclick="addComment(true)" style="padding: 12px; border-radius: 15px; cursor: pointer; border: none; background-color: #ced0d3; color: rgb(42, 41, 41); transition: background-color 0.3s; margin-right: 25px; font-weight: bold;">Anonim Yorum Ekle</button>
+                    <button type="button" onclick="redirectToFeedback()" style="padding: 12px; border-radius: 15px; cursor: pointer; border: none; background-color: #ced0d3; color: rgb(42, 41, 41); transition: background-color 0.3s; font-weight: bold;">Sorun Bildir / İstek Gönder</button>
+    
+    
+                </form>
+                <div class="comment-container" id="comment-section">
+                    <!-- Yorumlar buraya eklenecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function searchComments() {
+            const searchInput = document.getElementById('search-input');
+            const searchTerm = searchInput.value.toLowerCase();
+
+            const comments = document.getElementsByClassName('comment');
+
+            for (let i = 0; i < comments.length; i++) {
+                console.log(comments[i]);
+                const comment = comments[i];
+                const commentText = comment.innerText.toLowerCase();
+
+                if (commentText.includes(searchTerm)) {
+                    comment.style.display = 'block';
+                } else {
+                    comment.style.display = 'none';
+                }
+            }
+        }
+
+        function getComments() {
+            fetch('/comments')
+                .then(response => response.json())
+                .then(data => {
+                    const commentSection = document.getElementById('comment-section');
+                    commentSection.innerHTML = '';
+
+                    data.forEach(comment => {
+                        if (comment.parent_id === 'null') {
+                            
+                        const commentDiv = document.createElement('div');
+                        commentDiv.className = 'comment';
+                        commentDiv.innerHTML = `
+                            <div class="comment-wrapper">
+                                <strong>${comment.username}</strong>: ${comment.text}
+                                <div class="actions">
+                                    <button onclick="editComment(${comment.id})">Düzenle</button>
+                                    <button onclick="deleteComment(${comment.id})">Sil</button>
+                                    <button onclick="likeComment(${comment.id})">Beğen</button>
+                                    <button onclick="toggleReplyForm(${comment.id})">Cevapla</button>
+                                    <button onclick="complainAboutComment(${comment.id}) ">Şikayet Et</button>
+
+                                    <span>Beğeni: ${comment.likes}</span>
+                                </div>
+                                <div id="reply-form-container-${comment.id}" class="reply-form-container"></div>
+                                <div class="replies" id="replies-${comment.id}"></div>
+                            </div>`;
+                        commentSection.appendChild(commentDiv);
+                        createReplyForm(comment.id);
+                        displayReplies(comment.id, comment.children);
+              
+                        }
+                    });
+                });
+        }
+
+
+        function addComment(isAnonymous = false) {
+            const comment = document.getElementById('comment').value;
+
+            // get username from the session
+            let username = '{{  username  }}';
+
+            if (isAnonymous) {
+                username = 'anonim';
+            }
+
+            if (!comment.trim()) {
+                alert('Yorum boş bırakılamaz.');
+                return;
+            }
+
+            fetch('/comments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "username" : username,
+                    "text" : comment,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.success) {
+                        getComments();
+                        document.getElementById('comment').value = ''; // Yorumu temizle
+                    } else if (data.success === false && data.message === "hakaret") {
+                        alert('Yorumunuz uygunsuz içerik içeriyor.');
+                        document.getElementById('comment').value = ''; // Yorumu temizle
+                    } else {
+                        alert('Yorum eklenirken bir hata oluştu.');
+                        document.getElementById('comment').value = ''; // Yorumu temizle
+                    }
+                });
+        }
+
+        function editComment(commentId) {
+            const newComment = prompt('Yorumunuzu düzenleyin:', '');
+            let username = '{{  username  }}';
+            if (newComment !== null) {
+                fetch(`/comments/${commentId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "text": newComment,
+                        "username": username,
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            getComments();
+                        } else if (data.success === false && data.message === "hakaret") {
+                            alert('Yorumunuz uygunsuz içerik içeriyor.');
+                        } else {
+                            alert(data.error);
+                        }
+                    });
+            }
+        }
+
+        function deleteComment(commentId) {
+            const confirmDelete = confirm('Yorumu silmek istediğinizden emin misiniz?');
+            if (confirmDelete) {
+
+                let username = '{{  username  }}';
+
+                fetch(`/comments/${commentId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "username": username,
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            getComments();
+                        } else {
+                            alert(data.error);
+                        }
+                    });
+            }
+        }
+
+        function redirectToFeedback() {
+    // Belirlediğiniz web adresine yönlendirme işlemi
+    window.location.href = 'https://github.com/Bulut-Bilisimciler/issue-tracker/issues/new/choose'; // Değiştirmeniz gereken URL
+}
+
+
+        function likeComment(commentId) {
+            let username = '{{  username  }}';
+            fetch(`/comments/${commentId}/like`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "username": username,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        getComments();
+                    } else {
+                        alert(data.error);
+                    }
+                });
+        }
+
+        function toggleReplyForm(commentId) {
+            const replyFormContainer = document.getElementById(`reply-form-container-${commentId}`);
+            const replyForm = `
+                <textarea id="reply-comment-${commentId}" placeholder="Yorumunuz" autocomplete="off"></textarea>
+                <button onclick="addReply(${commentId})">Cevap Ekle</button>
+            `;
+            replyFormContainer.innerHTML = replyForm;
+            replyFormContainer.style.display = replyFormContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function createReplyForm(commentId) {
+            const replyFormContainer = document.getElementById(`reply-form-container-${commentId}`);
+            const replyForm = `
+                <textarea id="reply-comment-${commentId}" placeholder="Yorumunuz" autocomplete="off"></textarea>
+                <button onclick="addReply(${commentId})">Cevap Ekle</button>
+            `;
+            replyFormContainer.innerHTML = replyForm;
+        }
+
+        function complainAboutComment(commentId) {
+    var confirmComplaint = confirm('Bu yorum topluluk kurallarına aykırı olduğundan emin misiniz?');
+
+    if (confirmComplaint) {
+        // Burada şikayet işlemlerini gerçekleştirebilirsin, örneğin bir API'ye istek göndererek.
+        alert('Şikayetiniz alınmıştır. Teşekkür ederiz!');
+    }
+}
+
+
+        function addReply(commentId) {
+            const username = '{{  username  }}'
+            const comment = document.getElementById(`reply-comment-${commentId}`).value;
+
+            if (!comment.trim()) {
+                alert('Yorum boş bırakılamaz.');
+                return;
+            }
+
+            fetch('/comments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "username" : username,
+                    "text" : comment,
+                    "parent_id": commentId,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        getComments();
+                        // Cevap formunu temizle
+                        document.getElementById(`reply-comment-${commentId}`).value = '';
+                    } else if (data.success === false && data.message === "hakaret") {
+                        alert('Yorumunuz uygunsuz içerik içeriyor.');
+                        // Cevap formunu temizle
+                        document.getElementById(`reply-comment-${commentId}`).value = '';
+                    } else {
+                        alert('Cevap eklenirken bir hata oluştu.');
+                    }
+                });
+        }
+
+        function displayReplies(commentId, replies) {
+            const replyContainer = document.getElementById(`replies-${commentId}`);
+            replyContainer.innerHTML = '';
+
+            replies.forEach(reply => {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'comment';
+                replyDiv.innerHTML = `
+                    <strong>${reply.username}</strong>: ${reply.text}
+                    <div class="actions">
+                        <button onclick="editComment(${reply.id})">Düzenle</button>
+                        <button onclick="deleteComment(${reply.id})">Sil</button>
+                        <button onclick="likeComment(${reply.id})">Beğen</button>
+                        
+                        <button onclick="complainAboutComment(${reply.id})">Şikayet Et</button>
+
+                        <span>Beğeni: ${reply.likes}</span>
+                    </div>`;
+                replyContainer.appendChild(replyDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', getComments);
+
+        function uploadCommentImage() {
+            const fileInput = document.getElementById('comment-file');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const commentInput = document.getElementById('comment');
+                            commentInput.value += `\n![Uploaded Image](${data.file_path})\n`;
+                        } else {
+                            alert('Dosya yüklenirken bir hata oluştu: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Dosya yüklenirken bir hata oluştu.');
+                    });
+            } else {
+                alert('Lütfen bir dosya seçin.');
+            }
+        }
+    </script>
+
+    <div id="image" style="background-image: url(https://github.com/Fatmaakarsu/project-task/blob/main/editor.png?raw=true);"></div>
+</body>
+</html>
