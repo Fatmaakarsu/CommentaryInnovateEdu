@@ -77,6 +77,17 @@ Makine öğrenimi algoritmalarını ve araçlarını içeren scikit-learn kütü
 ```sh
 pip install scikit-learn
 ```
+
+Tüm komutları yüklemek için:
+```sh
+apt-get update
+apt-get install python3-pip
+pip install flask
+pip install flask_sqlalchemy
+pip install flask-bcrypt
+pip install joblib
+pip install scikit-learn
+```
 #### Projeyi çalıştırma
 
 ```sh
