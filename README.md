@@ -85,14 +85,14 @@ flask run --host=0.0.0.0
 
 Projeye erişmek için Port sekmesinden 5000 portuna gidelim
 
-Karşınızda Login ekranı açıldıysa tebrikler , projeyi başarılı bir şekilde çalıştırdınız. 
+Karşınızda Login ekranı açıldıysa tebrikler 🙌 projeyi başarılı bir şekilde çalıştırdınız.  🙏
 
 
 ## Proje İnceleme
 Yorum sistemini deneyebilmek için bir kullanıcı ile giriş yapmamız gerekmektedir.
 
 > Örnek kullanıcı emaili : bulut23@gmail.com
-Şifre: bulut
+> Şifre: bulut
 
 Kullanıcı girişi olduktan sonra direkt olarak bir eğitim bölümü içindeki yorum sistemini görüyoruz.
 
@@ -110,9 +110,22 @@ Yorum sisteminin özelliklerini deneyebiliriz   ✨
 ![image](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/assets/79910837/55709456-73bf-441f-9d24-45252e9d8249)
 
 ## Sonuç
-Harika :) Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sunduğumuz yorum eklentisi, sektördeki öncülerden daha gelişmiş ve işlevsel hale geldi. Eğitime kaydolan herkes, eğitimlerden daha fazla verim elde edebilecek ve hızla ilerleme kaydedebilecekler. Gelişmiş özelliklerimiz, kullanıcıların eğitim içeriklerini daha etkili bir şekilde değerlendirmelerine, sorular sormalarına, cevap almalarına ve genel olarak daha interaktif bir öğrenme deneyimi yaşamalarına olanak tanıyacak. 
+
+Harika ☺☺️☺️
+
+Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sunduğumuz yorum eklentisi, sektördeki öncülerden daha gelişmiş ve işlevsel hale geldi. Eğitime kaydolan herkes, eğitimlerden daha fazla verim elde edebilecek ve hızla ilerleme kaydedebilecekler. Gelişmiş özelliklerimiz, kullanıcıların eğitim içeriklerini daha etkili bir şekilde değerlendirmelerine, sorular sormalarına, cevap almalarına ve genel olarak daha interaktif bir öğrenme deneyimi yaşamalarına olanak tanıyacak. 
 
 ![Örnek Resim](https://github.com/Fatmaakarsu/project-task/blob/main/tablo2.png?raw=true)
+
+
+### Proje getirileri
+
+✅ Sürdürülebilir
+
+✅ Kullanıcı deneyimini önemli ölçüde zenginleştirir
+
+✅ Sitenin genel başarısına katkı sağlar
+
 
 
 
