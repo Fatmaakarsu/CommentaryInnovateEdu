@@ -123,7 +123,7 @@ Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sunduğumuz yor
 ✅ Sürdürülebilir
 
 ✅ Kullanıcı deneyimini önemli ölçüde zenginleştirir
-
+ 
 ✅ Sitenin genel başarısına katkı sağlar
 
 
