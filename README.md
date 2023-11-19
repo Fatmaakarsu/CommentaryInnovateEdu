@@ -78,7 +78,7 @@ Makine öğrenimi algoritmalarını ve araçlarını içeren scikit-learn kütü
 pip install scikit-learn
 ```
 
-Tüm komutları yüklemek için:
+Tüm kütüphaneleri yüklemek için:
 ```sh
 apt-get update
 apt-get install python3-pip
