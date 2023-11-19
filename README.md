@@ -105,6 +105,10 @@ Yorum sisteminin özelliklerini deneyebiliriz   ✨
 - Kullanıcılar kötüye kullanım olarak gördükleri yorumları şikayet edebilir.
 - Sorun Bildir / İstek Gönder butonu ile kullanıcılar Bulut Bilişimciler issue-tracker reposuna yönlendilir.
 
+![image](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/assets/79910837/289f6b58-475f-48e8-acb4-b8fc7a059028)
+
+![image](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/assets/79910837/55709456-73bf-441f-9d24-45252e9d8249)
+
 ## Sonuç
 Harika :) Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sunduğumuz yorum eklentisi, sektördeki öncülerden daha gelişmiş ve işlevsel hale geldi. Eğitime kaydolan herkes, eğitimlerden daha fazla verim elde edebilecek ve hızla ilerleme kaydedebilecekler. Gelişmiş özelliklerimiz, kullanıcıların eğitim içeriklerini daha etkili bir şekilde değerlendirmelerine, sorular sormalarına, cevap almalarına ve genel olarak daha interaktif bir öğrenme deneyimi yaşamalarına olanak tanıyacak. 
 
@@ -112,8 +116,5 @@ Harika :) Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sundu
 
 
 
-![image](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/assets/79910837/289f6b58-475f-48e8-acb4-b8fc7a059028)
-
-![image](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/assets/79910837/55709456-73bf-441f-9d24-45252e9d8249)
 
 
