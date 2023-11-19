@@ -126,6 +126,8 @@ Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sunduğumuz yor
  
 ✅ Sitenin genel başarısına katkı sağlar
 
+✅ Geliştirilebilir
+
 
 
 
