@@ -31,7 +31,7 @@ Eğitim platformlarının her eğitim için yorum seçeneğini aktif etmesinin k
 Eğitim teknolojileri ve bilişim sektöründe lider konumda olan şirketler, kullanıcıların etkileşimde bulunmasını teşvik eden ve eğitim içeriğini geliştirmek için geri bildirimi değerlendiren sistemleri başarıyla kullanmaktadır.
 
 Sektörde Bilgisayar bilimleri ve IT sektöründe en çok tercih edilen eğitim platformlarına bir bakalım:
-![Alternatif Metin](https://github.com/Fatmaakarsu/project-task/blob/main/tablo11.png?raw=true)
+![Alternatif Metin](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/blob/main/Readme/Comment%20Feature%20Project/images/tablo1.png?raw=true)
 
 Haydi gelin bizde beraber Bulut Bilişimciler platformu için geliştirdiğimiz yorum eklentisi projesini inceleyelim ✨
 
@@ -126,7 +126,7 @@ Harika ☺☺️☺️
 
 Projemizle birlikte, buluş bilişimciler eğitim platformumuzda sunduğumuz yorum eklentisi, sektördeki öncülerden daha gelişmiş ve işlevsel hale geldi. Eğitime kaydolan herkes, eğitimlerden daha fazla verim elde edebilecek ve hızla ilerleme kaydedebilecekler. Gelişmiş özelliklerimiz, kullanıcıların eğitim içeriklerini daha etkili bir şekilde değerlendirmelerine, sorular sormalarına, cevap almalarına ve genel olarak daha interaktif bir öğrenme deneyimi yaşamalarına olanak tanıyacak. 
 
-![Örnek Resim](https://github.com/Fatmaakarsu/project-task/blob/main/tablo2.png?raw=true)
+![Örnek Resim](https://github.com/Fatmaakarsu/CommentaryInnovateEdu/blob/main/Readme/Comment%20Feature%20Project/images/tablo2.png?raw=true)
 
 
 ### Proje getirileri
