@@ -207,8 +207,8 @@ def login():
 
         if user and req_password == user.password:
             # create session for user
-            left_image_url = "https://github.com/Fatmaakarsu/project-task/blob/main/Senaryo.png?raw=true"
-            right_image_url = "https://github.com/Fatmaakarsu/project-task/blob/main/editor.png?raw=true"
+            left_image_url = "https://github.com/Fatmaakarsu/CommentaryInnovateEdu/blob/main/Readme/Comment%20Feature%20Project/images/senaryo.png?raw=true"
+            right_image_url = "https://github.com/Fatmaakarsu/CommentaryInnovateEdu/blob/main/Readme/Comment%20Feature%20Project/images/editor.png?raw=true"
             
             return render_template('home.html', left_image_url=left_image_url, right_image_url=right_image_url, user_id = user.id, username=user.username, email=user.email, full_name=user.full_name)
 
